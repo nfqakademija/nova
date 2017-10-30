@@ -17,3 +17,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            SuperSecretAcademyHashKeyDoNotTellAnyone
+
+    # Facebook App
+    facebook_app_id:
+    facebook_app_secret:
+    facebook_app_version:
