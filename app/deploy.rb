@@ -1,7 +1,7 @@
-set :application, 'kickstart'
+set :application, 'nova'
 set :repo_url, '#'
 
-set :deploy_to, '/home/kickstart/'
+set :deploy_to, '/home/nova/'
 
 set :archive_cache, true
 set :branch, 'master'
