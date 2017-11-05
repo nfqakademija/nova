@@ -59,6 +59,13 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+# Stofs' doctrine extensions
+stof_doctrine_extensions:
+    default_locale: lt
+    orm:
+        default:
+            timestampable: true # We will use dates everywhere
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
