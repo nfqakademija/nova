@@ -8,7 +8,7 @@ var uglify  = require('gulp-uglify');
 var dir = {
     assets: './src/AppBundle/Resources/',
     dist: './web/',
-    npm: './node_modules/',
+    npm: './node_modules/'
 };
 
 gulp.task('sass', function() {
@@ -20,7 +20,7 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
     gulp.src([
-            //Third party assets
+            // Third party assets
             dir.npm + 'jquery/dist/jquery.min.js',
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
 
@@ -41,9 +41,21 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
     gulp.src([
-        dir.npm + 'bootstrap-sass/assets/fonts/**'
+        dir.npm + 'bootstrap-sass/assets/fonts/**',
+        dir.npm + 'font-awesome-sass/assets/fonts/**'
         ])
         .pipe(gulp.dest(dir.dist + 'fonts'));
 });
 
-gulp.task('default', ['sass', 'scripts', 'fonts', 'images']);
+// Initial copy
+gulp.task('copy', ['fonts', 'scripts', 'sass', 'images']);
+
+// Copy and watch
+gulp.task('watch', function() {
+    gulp.watch(dir.assets + 'scripts/**/*.js', ['scripts']);
+    gulp.watch(dir.assets + 'style/**/*.scss', ['sass']);
+    gulp.watch(dir.assets + 'images/**', ['images']);
+});
+
+// Run all tasks
+gulp.task('default', ['copy', 'watch']);
