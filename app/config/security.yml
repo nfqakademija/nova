@@ -20,7 +20,7 @@ security:
             logout: ~
             guard:
                 authenticators:
-                    - AppBundle\Security\FacebookAuthenticator
+                    - AppBundle\Services\FacebookAuthenticator
             # activate different ways to authenticate
 
             # http_basic: ~
