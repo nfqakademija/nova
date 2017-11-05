@@ -2,46 +2,21 @@
 
 {% block title %}Homepage - {{ parent() }}{% endblock %}
 
-{% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,400" rel="stylesheet" type="text/css">
-    {{ parent() }}
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
+{% block content %}
+    <div class="slider">
+        <!-- UNDER CONSTRUCTION -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% for message in app.flashes('error') %}
+                    <div class="alert-danger"><strong>Error!</strong> {{ message }}</div>
+                {% endfor %}
 
-        .title {
-            margin: 20px auto;
-            text-align: center;
-            font-size: 96px;
-        }
-
-        a, a:visited {
-            color: #2e6da4;
-        }
-
-        p {
-            font-weight: 400;
-            text-align: center;
-        }
-
-        .error {
-            color: #cc0000;
-        }
-    </style>
-{% endblock %}
-
-{% block body %}
-    <div class="title">NFQ Akademija</div>
-    {% for message in app.flashes('error') %}
-        <p class="error">{{ message }}</p>
-    {% endfor %}
-    {% if app.user %}
-        <p>Hello, {{ app.user.firstname }}! Maybe <a href="{{ url('logout') }}">logout</a>?</p>
-    {% else %}
-        <p><a href="{{ path('app.facebook.connect') }}">Connect via Facebook</a></p>
-    {% endif %}
+                {% if app.user %}
+                    <p>Hello, <i>{{ app.user.firstname }}</i>!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

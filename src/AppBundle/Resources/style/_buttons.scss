@@ -1,0 +1,16 @@
+.btn-primary {
+  @include button-variant($white, $black, $gray-light);
+
+  &:hover {
+    background-color: $gray-light;
+    border-color: $black;
+    color: $black;
+  }
+}
+
+.btn-facebook {
+  &:hover {
+    background-color: #3b5998;
+    color: $white;
+  }
+}
