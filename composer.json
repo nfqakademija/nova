@@ -24,7 +24,8 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "twig/twig": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
-        "league/oauth2-facebook": "^2.0"
+        "league/oauth2-facebook": "^2.0",
+        "doctrine/doctrine-migrations-bundle": "v1.2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "*",
