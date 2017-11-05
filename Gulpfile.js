@@ -48,14 +48,16 @@ gulp.task('fonts', function() {
 });
 
 // Initial copy
-gulp.task('copy', ['fonts', 'scripts', 'sass', 'images']);
+// gulp.task('copy', ['fonts', 'scripts', 'sass', 'images']);
 
 // Copy and watch
-gulp.task('watch', function() {
-    gulp.watch(dir.assets + 'scripts/**/*.js', ['scripts']);
-    gulp.watch(dir.assets + 'style/**/*.scss', ['sass']);
-    gulp.watch(dir.assets + 'images/**', ['images']);
-});
+// gulp.task('watch', function() {
+//    gulp.watch(dir.assets + 'scripts/**/*.js', ['scripts']);
+//    gulp.watch(dir.assets + 'style/**/*.scss', ['sass']);
+//    gulp.watch(dir.assets + 'images/**', ['images']);
+// });
 
 // Run all tasks
-gulp.task('default', ['copy', 'watch']);
+// gulp.task('default', ['copy', 'watch']);
+
+gulp.task('default', ['fonts', 'scripts', 'sass', 'images']);
