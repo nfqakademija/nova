@@ -25,7 +25,8 @@
         "twig/twig": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "league/oauth2-facebook": "^2.0",
-        "doctrine/doctrine-migrations-bundle": "v1.2.1"
+        "doctrine/doctrine-migrations-bundle": "v1.2.1",
+        "stof/doctrine-extensions-bundle": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "*",
