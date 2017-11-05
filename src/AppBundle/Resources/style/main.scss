@@ -1,2 +1,15 @@
-//bootstrap
+// Variables for Bootstrap and not only
+@import "variables";
+
+// Bootstrap
 @import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font Awesome
+@import "./node_modules/font-awesome-sass/assets/stylesheets/font-awesome";
+
+// Main NOVA project styles
+@import "general";
+@import "navbar";
+@import "slider";
+@import "modals";
+@import "buttons";

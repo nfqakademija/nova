@@ -1,0 +1,36 @@
+// Nova colors
+$gray: #929292;
+$gray-light: #f3f3f3;
+$white: #FFFFFF; // Maybe I'll change it to not clear white
+$black: #080808; // My black isn't black
+
+
+//
+// Bootstrap variables
+//
+
+// Main
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+// Navbar
+$navbar-height: 96px;
+$navbar-default-bg: $white;
+$navbar-default-link-color: $black;
+$navbar-default-link-hover-color: $gray;
+$navbar-default-link-active-color: $gray;
+$navbar-default-link-active-bg: transparent;
+
+// Fonts
+$font-family-sans-serif: Catamaran, sans-serif;
+
+// Modal
+$modal-content-border-color: $gray-light;
+$modal-title-padding: 25px;
+$modal-sm: 450px;
+
+// Links & buttons
+$link-color: $black;
+$btn-border-radius-small: 0;
+$btn-border-radius-large: 0;
