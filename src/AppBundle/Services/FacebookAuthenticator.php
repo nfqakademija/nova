@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Security;
+namespace AppBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -199,9 +199,9 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
             $facebookUser = $this->provider->getResourceOwner($accessToken);
 
             // If user was logged before
-            $existingUser = $this->em->getRepository('AppBundle:User')->findOneBy(['facebookId' => $facebookUser->getId()]);
-            if ($existingUser) {
-                return $existingUser;
+            $user = $this->em->getRepository('AppBundle:User')->findOneBy(['facebookId' => $facebookUser->getId()]);
+            if ($user) {
+                return $user;
             }
 
             return $this->em->getRepository('AppBundle:User')->createNewFacebookUser($facebookUser);

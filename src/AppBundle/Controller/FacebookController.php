@@ -18,7 +18,7 @@ class FacebookController extends Controller
      */
     public function connectAction()
     {
-        $facebook = $this->get('app.facebook_authenticator');
+        $facebook = $this->get('AppBundle\Services\FacebookAuthenticator');
 
         return new RedirectResponse($facebook->getLoginUrl());
     }
