@@ -22,8 +22,3 @@ parameters:
     facebook_app_id:
     facebook_app_secret:
     facebook_app_version:
-
-    # Cloudinary credentials
-    cloudinary_cloud_name:
-    cloudinary_api_key:
-    cloudinary_secret_key:
