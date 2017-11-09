@@ -2,7 +2,10 @@
 
 namespace AppBundle\Services;
 
+use AppBundle\Event\FacebookEvents;
+use AppBundle\Event\FacebookLoginEvent;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,6 +58,11 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
     private $router;
 
     /**
+     * @var EventDispatcher
+     */
+    private $dispatcher;
+
+    /**
      * FacebookAuthenticator constructor.
      *
      * @param string $facebook_app_id
@@ -63,13 +71,14 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
      * @param EntityManager $em
      * @param RouterInterface $router
      */
-    public function __construct($facebook_app_id, $facebook_app_secret, $facebook_app_version, EntityManager $em, RouterInterface $router)
+    public function __construct($facebook_app_id, $facebook_app_secret, $facebook_app_version, EntityManager $em, RouterInterface $router, EventDispatcher $dispatcher)
     {
         $this->facebook_app_id = $facebook_app_id;
         $this->facebook_app_secret = $facebook_app_secret;
         $this->facebook_app_version = $facebook_app_version;
         $this->em = $em;
         $this->router = $router;
+        $this->dispatcher = $dispatcher;
 
         $this->createProvider();
     }
@@ -198,9 +207,16 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
             /** @var FacebookUser $facebookUser */
             $facebookUser = $this->provider->getResourceOwner($accessToken);
 
+            $this->dispatcher->dispatch(FacebookEvents::FACEBOOK_LOGIN, new FacebookLoginEvent($facebookUser));
+
             // If user was logged before
             $user = $this->em->getRepository('AppBundle:User')->findOneBy(['facebookId' => $facebookUser->getId()]);
             if ($user) {
+                // Updating picture field
+                $user->setHasFacebookPicture(!$facebookUser->isDefaultPicture());
+
+                $this->em->flush();
+
                 return $user;
             }
 

@@ -73,3 +73,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Misteo Cloudinary
+misteio_cloudinary:
+  cloud_name: %cloudinary_cloud_name%
+  api_key: %cloudinary_api_key%
+  secret_key: %cloudinary_secret_key%
