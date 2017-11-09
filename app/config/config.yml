@@ -76,6 +76,6 @@ swiftmailer:
 
 # Misteo Cloudinary
 misteio_cloudinary:
-  cloud_name: %cloudinary_cloud_name%
-  api_key: %cloudinary_api_key%
-  secret_key: %cloudinary_secret_key%
+  cloud_name: martynas
+  api_key: 737275833312289
+  secret_key: 9P7tu7A3yCd8U2TotWFGgEWg9ek
