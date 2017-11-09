@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             // Add above AppBundle
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Misteio\CloudinaryBundle\MisteioCloudinaryBundle(),
 
             new AppBundle\AppBundle(),
         );

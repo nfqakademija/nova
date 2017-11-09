@@ -26,7 +26,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "league/oauth2-facebook": "^2.0",
         "doctrine/doctrine-migrations-bundle": "v1.2.1",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "misteio/cloudinary-bundle": "^0.2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "*",

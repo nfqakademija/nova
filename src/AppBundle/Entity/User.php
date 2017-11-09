@@ -52,6 +52,13 @@ class User implements UserInterface
     private $facebookId;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="has_facebook_picture", type="boolean")
+     */
+    private $hasFacebookPicture;
+
+    /**
      * @var \DateTime $createdAt
      *
      * @Gedmo\Timestampable(on="create")
@@ -259,5 +266,25 @@ class User implements UserInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHasFacebookPicture()
+    {
+        return $this->hasFacebookPicture;
+    }
+
+    /**
+     * @param bool $hasFacebookPicture
+     *
+     * @return User
+     */
+    public function setHasFacebookPicture($hasFacebookPicture)
+    {
+        $this->hasFacebookPicture = $hasFacebookPicture;
+
+        return $this;
     }
 }
