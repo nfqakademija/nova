@@ -47,17 +47,19 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest(dir.dist + 'fonts'));
 });
 
-// Initial copy
-// gulp.task('copy', ['fonts', 'scripts', 'sass', 'images']);
+// Run all above tasks
+gulp.task('task:run-all', ['fonts', 'scripts', 'sass', 'images']);
 
-// Copy and watch
-// gulp.task('watch', function() {
-//    gulp.watch(dir.assets + 'scripts/**/*.js', ['scripts']);
-//    gulp.watch(dir.assets + 'style/**/*.scss', ['sass']);
-//    gulp.watch(dir.assets + 'images/**', ['images']);
-// });
+// Watch task for development
+gulp.task('task:watch', function() {
+    gulp.task('default', ['tasks:all']);
+    gulp.watch(dir.assets + 'scripts/**/*.js', ['scripts']);
+    gulp.watch(dir.assets + 'style/**/*.scss', ['sass']);
+    gulp.watch(dir.assets + 'images/**', ['images']);
+});
 
-// Run all tasks
-// gulp.task('default', ['copy', 'watch']);
+// Dev task
+gulp.task('dev', ['task:run-all', 'task:watch']);
 
-gulp.task('default', ['fonts', 'scripts', 'sass', 'images']);
+// Default task...
+gulp.task('default', ['task:run-all']);
