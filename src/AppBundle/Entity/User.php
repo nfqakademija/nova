@@ -56,7 +56,14 @@ class User implements UserInterface
      *
      * @ORM\Column(name="has_facebook_picture", type="boolean")
      */
-    private $hasFacebookPicture;
+    private $hasFacebookPicture = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="text", nullable=true)
+     */
+    private $token;
 
     /**
      * @var \DateTime $createdAt
@@ -269,21 +276,41 @@ class User implements UserInterface
     }
 
     /**
-     * @return bool
+     * @return boolean
      */
-    public function getHasFacebookPicture()
+    public function hasFacebookPicture()
     {
         return $this->hasFacebookPicture;
     }
 
     /**
-     * @param bool $hasFacebookPicture
+     * @param boolean $hasFacebookPicture
      *
      * @return User
      */
     public function setHasFacebookPicture($hasFacebookPicture)
     {
         $this->hasFacebookPicture = $hasFacebookPicture;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
 
         return $this;
     }

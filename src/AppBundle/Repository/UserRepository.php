@@ -28,7 +28,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $user->setFirstName($facebookUser->getFirstName());
         $user->setLastName($facebookUser->getLastName());
         $user->setFacebookId($facebookUser->getId());
-        $user->setHasFacebookPicture(!$facebookUser->isDefaultPicture());
 
         // Saving user
         $this->getEntityManager()->persist($user);

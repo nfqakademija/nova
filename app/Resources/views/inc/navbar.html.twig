@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ path('homepage') }}">
                 <img alt="NOVA" src="{{ asset('images/logo.png') }}">
             </a>
         </div>
@@ -32,12 +32,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user %}
-                    <li><a href="{{ path('logout') }}">
-                            {# Facebook picture will be deleted from here #}
-                            {%  if app.user.hasFacebookPicture %}
-                                <img src="{{ app.user.facebookId|cloudinary_url({"width" : 20, "height" : 20, "gravity": "face", "crop" : "fill", "radius" : "max", "effect": "grayscale"}) }}" alt="" style="margin-top: -4px;">
-                            {% endif %}
-                            Logout</a></li>
+                    <li><a href="{{ path('logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="javascript:;" data-toggle="modal" data-target="#modal-login"><i class="fa fa-user-o" aria-hidden="true"></i> Login</a></li>
                 {% endif %}

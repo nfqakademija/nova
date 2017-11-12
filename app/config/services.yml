@@ -34,6 +34,9 @@ services:
 
 
     AppBundle\EventListener\PostFacebookAuthenticationListener:
-            #arguments: ['@misteio_cloudinary_wrapper']
+            arguments:
+                $facebook_app_id: '%facebook_app_id%'
+                $facebook_app_secret: '%facebook_app_secret%'
+                $facebook_app_version: '%facebook_app_version%'
             tags:
-                - { name: kernel.event_listener, event: facebook.login, method: savePicture }
+                - { name: kernel.event_listener, event: security.interactive_login, method: savePicture } # facebook.login
