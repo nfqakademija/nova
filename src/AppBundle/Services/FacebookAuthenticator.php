@@ -207,21 +207,20 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
             /** @var FacebookUser $facebookUser */
             $facebookUser = $this->provider->getResourceOwner($accessToken);
 
-            $this->dispatcher->dispatch(FacebookEvents::FACEBOOK_LOGIN, new FacebookLoginEvent($facebookUser));
-
-            // If user was logged before
             $user = $this->em->getRepository('AppBundle:User')->findOneBy(['facebookId' => $facebookUser->getId()]);
-            if ($user) {
-                // Updating picture field
-                $user->setHasFacebookPicture(!$facebookUser->isDefaultPicture());
 
-                $this->em->flush();
-
-                return $user;
+            // If user not found, create new
+            if (!$user) {
+                $user = $this->em->getRepository('AppBundle:User')->createNewFacebookUser($facebookUser);
             }
 
-            return $this->em->getRepository('AppBundle:User')->createNewFacebookUser($facebookUser);
+            // Keeping newest FB token in DB for additional requests to GRAPH API
+            $user->setToken($accessToken->getToken());
+            $this->em->flush();
+
+            return $user;
         } catch (\Exception $e) {
+            die(dump($e));
             // Failed to get user details
             return null;
         }
