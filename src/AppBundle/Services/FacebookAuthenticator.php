@@ -220,7 +220,6 @@ class FacebookAuthenticator extends AbstractGuardAuthenticator
 
             return $user;
         } catch (\Exception $e) {
-            die(dump($e));
             // Failed to get user details
             return null;
         }
