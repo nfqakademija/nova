@@ -1,0 +1,12 @@
+AppBundle\Entity\User:
+    user_admin:
+        email: 'm.zaliaduonis@gmail.com'
+        firstName: 'Martynas'
+        lastName: 'Žaliaduonis'
+        facebookId: '10204796082887354'
+        # roles: '[ROLE_ADMIN]' # TODO: add roles for users
+    user{1..99}:
+        email: '<email()>'
+        firstName: '<firstName()>'
+        lastName: '<lastName()>'
+        # roles: '[ROLE_USER]' # TODO: add roles for users
